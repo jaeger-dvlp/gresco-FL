@@ -2,14 +2,15 @@ import React from 'react';
 import Meta from '@/components/layout/Meta';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import Banner from '@/components/home/Banner';
 
 export default function Home(): JSX.Element {
   return (
     <>
       <Meta title=".." description=".." />
       <Header />
-      <main className="flex min-h-screen items-center justify-center pt-[150px]">
-        Hello world.
+      <main className="m-0 flex flex-col items-center justify-start bg-white p-0 font-theme">
+        <Banner />
       </main>
       <Footer />
     </>
