@@ -6,6 +6,36 @@
   scroll-behavior: smooth !important;
 }
 
+.letter-spacing-2 {
+  letter-spacing: 2px;
+}
+
+.hd-desktop-elm {
+  @apply letter-spacing-2 relative uppercase text-orange-600;
+}
+
+.hd-mobile-elm {
+  @apply letter-spacing-2 relative uppercase text-orange-600;
+}
+
+.hd-desktop-elm::before {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0px;
+  content: '';
+  height: 1px;
+  bottom: -5px;
+  position: absolute;
+  background-color: rgb(234, 88, 12);
+  transition-delay: 200ms !important;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.hd-desktop-elm:hover::before {
+  width: 100%;
+  transition-delay: 0ms !important;
+}
+
 .default-zoom-in {
   opacity: 0;
   transform: scale(0.9);

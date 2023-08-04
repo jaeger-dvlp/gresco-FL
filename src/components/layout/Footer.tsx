@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import Logo from '@/components/misc/Logo';
 import { BsInstagram } from 'react-icons/bs';
-import Logo from '@/public/assets/img/beyond.png';
-import { FooterSocialLink } from '@/types/footer.types';
+import { FooterSocialLink } from '@/types/boilerplate.types';
 
 function Footer(): JSX.Element {
   const FooterSocialLinks: FooterSocialLink[] = [
@@ -27,14 +27,10 @@ function Footer(): JSX.Element {
   };
 
   return (
-    <footer className="m-0 flex min-h-[100px] w-full flex-wrap items-center justify-center bg-zinc-300 p-0">
+    <footer className="m-0 flex w-full flex-wrap items-center justify-center bg-white p-0">
       <section className="flex w-full max-w-theme flex-wrap items-center justify-between p-5">
         <Link href="/" className="relative">
-          <img
-            alt="Logo"
-            src={Logo.src}
-            className="aspect-square w-10 bg-black object-contain p-1 opacity-80 transition-all duration-150"
-          />
+          <Logo className="w-full max-w-[150px] text-orange-600 transition-all duration-500" />
         </Link>
         <nav className="flex items-center justify-center ">
           <ul className="flex list-none flex-wrap items-center justify-center gap-3 lg:flex-nowrap xl:flex-nowrap">
