@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Logo from '@/components/misc/Logo';
 
-import BannerImage from '@/public/assets/img/bannerImage.jpeg';
+import BannerImage from '@/public/assets/img/productArt.jpeg';
 
 function Banner() {
   return (

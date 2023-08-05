@@ -1,7 +1,17 @@
 import React from 'react';
+import ProductClearImage from '@/public/assets/img/productClear.jpeg';
 
-export type Item = {
-  id: number;
+export const GrescoCoalItem = {
+  id: 'GRSCOCOAL01',
+  image: ProductClearImage.src,
+  name: 'Gresco Doğal Nargile Kömürü',
+  price: 89.99,
+};
+
+export const AllProducts = [GrescoCoalItem];
+
+export type TItem = {
+  id: string;
   image: string;
   name: string;
   price: number;
@@ -11,7 +21,7 @@ export type Item = {
 type TAppContet = {
   cartItems: any[];
   isCartActive: boolean;
-  addProductToCart: (item: Item) => void;
+  addProductToCart: (item: Omit<TItem, 'price'>) => void;
   clearCart: () => void;
   activateCart: () => void;
   deactivateCart: () => void;
@@ -26,7 +36,7 @@ const AppContext = React.createContext<TAppContet>({
   deactivateCart: () => {},
 });
 
-function SetLocalStorageCartItems(cartItems: Item[]) {
+function SetLocalStorageCartItems(cartItems: Omit<TItem, 'price'>[]) {
   localStorage.setItem('gresco-cart', JSON.stringify(cartItems));
 }
 
@@ -35,7 +45,7 @@ export default function AppWrapper({
 }: {
   children: JSX.Element | JSX.Element[];
 }) {
-  const [cartItems, setCartItems] = React.useState<Item[]>([]);
+  const [cartItems, setCartItems] = React.useState<Omit<TItem, 'price'>[]>([]);
   const [isCartActive, setIsCartActive] = React.useState(false);
 
   const activateCart = React.useCallback(() => {
@@ -47,7 +57,7 @@ export default function AppWrapper({
   }, [isCartActive]);
 
   const addProductToCart = React.useCallback(
-    (item: Item) => {
+    (item: Omit<TItem, 'price'>) => {
       const allItems = [...cartItems];
 
       const itemIndex = allItems.findIndex((i) => i.id === item.id);

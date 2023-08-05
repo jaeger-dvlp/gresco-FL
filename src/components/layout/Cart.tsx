@@ -1,9 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Item, useAppContext } from '@/contexts/App.context';
+import { AllProducts, TItem, useAppContext } from '@/contexts/App.context';
 
-function CartItem({ item }: { item: Item }) {
+function CartItem({ item }: { item: Omit<TItem, 'price'> }) {
+  const ItemPrice = AllProducts.find((i) => i.id === item.id)?.price || 0;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -25 }}
@@ -14,7 +16,7 @@ function CartItem({ item }: { item: Item }) {
       <div className="flex w-full flex-col items-start justify-start gap-1">
         <p className="text-sm">{item.name}</p>
         <p className="flex flex-wrap items-center justify-start font-mono text-sm text-slate-500">
-          <span className="mr-1 text-lg text-orange-600">₺{item.price}</span>x
+          <span className="mr-1 text-lg text-orange-600">₺{ItemPrice}</span>x
           <span className="ml-1 bg-orange-600 px-2 pt-1 pb-1.5 text-white">
             {item.quantity}
           </span>
@@ -25,6 +27,7 @@ function CartItem({ item }: { item: Item }) {
 }
 
 function Cart() {
+  const [totalPrice, setTotalPrice] = React.useState(0);
   const { isCartActive, cartItems, activateCart, clearCart } = useAppContext();
 
   React.useEffect(() => {
@@ -32,13 +35,24 @@ function Cart() {
       activateCart();
     }
   }, [cartItems]);
+
+  React.useEffect(() => {
+    const total = cartItems.reduce((acc, item) => {
+      const ItemPrice = AllProducts.find((i) => i.id === item.id)?.price || 0;
+
+      return acc + Math.floor(ItemPrice * item.quantity * 100) / 100;
+    }, 0);
+
+    setTotalPrice(total);
+  }, [cartItems]);
+
   return (
     <AnimatePresence>
       {isCartActive && (
         <motion.div
-          initial={{ opacity: 0, y: -25 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -25 }}
+          exit={{ opacity: 0, y: 0 }}
           transition={{ duration: 0.2 }}
           style={{
             right: 0,
@@ -48,7 +62,7 @@ function Cart() {
             maxWidth: '100%',
             minHeight: '100px',
           }}
-          className="cart absolute top-20 rounded-xl border border-slate-300 bg-white p-5 shadow-xl shadow-black/20"
+          className="absolute top-10 rounded-sm border border-slate-300 bg-white p-5 shadow-xl shadow-black/20"
         >
           <div className="flex w-full items-start justify-start border-b border-b-slate-300 pb-4 text-left text-sm text-orange-600">
             Sepetim
@@ -58,16 +72,21 @@ function Cart() {
               {cartItems.map((item, i) => (
                 <CartItem key={`cart-item-${i}`} item={item} />
               ))}
-              <div className="mt-5 flex w-full items-center justify-end gap-2">
+              <div className="mt-5 flex w-full flex-wrap items-center justify-start gap-2">
+                <p className="w-full font-mono text-sm text-slate-500">
+                  Toplam :{' '}
+                  <span className="text-orange-600">₺{totalPrice}</span>
+                </p>
+
+                <button type="button" className="bg-orange-600 px-3 py-1">
+                  <p className="text-sm text-white">Sepeti Onayla</p>
+                </button>
                 <button
                   onClick={clearCart}
                   type="button"
                   className="px-2 text-sm text-slate-500 hover:underline"
                 >
                   Temizle
-                </button>
-                <button type="button" className="bg-orange-600 px-3 py-1">
-                  <p className="text-sm text-white">Sepeti Onayla</p>
                 </button>
               </div>
             </div>
