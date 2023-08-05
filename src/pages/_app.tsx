@@ -1,3 +1,4 @@
+import AOS from 'aos';
 import React from 'react';
 import type { AppProps } from 'next/app';
 import PopupWrapper from '@/contexts/Popup.context';
@@ -6,6 +7,7 @@ import LanguageWrapper from '@/contexts/Language.context';
 import ConfirmPopup from '@/components/popups/Confirm.popup';
 
 // ? Global styles
+import 'aos/dist/aos.css';
 import '@/styles/globals.css';
 
 // * Local font implementation with @next/font/local - #1
@@ -25,6 +27,11 @@ import '@/styles/globals.css';
 // });
 
 export default function App({ Component, pageProps }: AppProps) {
+  React.useEffect(() => {
+    AOS.init({
+      once: true,
+    });
+  }, []);
   return (
     <>
       {/* 
