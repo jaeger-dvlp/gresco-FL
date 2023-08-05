@@ -17,20 +17,22 @@ function Banner() {
       }}
       className="flex max-h-[2000px] min-h-screen w-full flex-wrap items-center justify-center gap-20 overflow-hidden pt-[100px]"
     >
-      <section className="flex w-full max-w-theme flex-wrap items-center justify-center gap-20 overflow-hidden p-10">
-        <motion.img
-          alt="Gresco"
-          transition={{
-            duration: 1.5,
-            ease: 'anticipate',
-            stiffness: 900,
-            delay: 0.3,
-          }}
-          animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-          initial={{ opacity: 0, scale: 0.9, x: -400, y: -400 }}
-          src={BannerImage.src}
-          className="w-full max-w-[410px] rounded-xl object-contain object-center shadow-2xl shadow-black/30"
-        />
+      <section className="grid max-w-xl grid-cols-1 place-content-center place-items-center gap-10 p-10 lg:max-w-theme lg:grid-cols-2">
+        <section className="flex w-full items-center justify-center">
+          <motion.img
+            alt="Gresco"
+            transition={{
+              duration: 1.5,
+              ease: 'anticipate',
+              stiffness: 900,
+              delay: 0.3,
+            }}
+            animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9, x: -100, y: -100 }}
+            src={BannerImage.src}
+            className="w-full rounded-xl object-contain object-center shadow-2xl shadow-black/30"
+          />
+        </section>
         <motion.section
           transition={{
             duration: 1.5,
