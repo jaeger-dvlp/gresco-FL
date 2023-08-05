@@ -1,16 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
 import { BsBag } from 'react-icons/bs';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import Logo from '@/components/misc/Logo';
+import Cart from '@/components/layout/Cart';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
+import { useAppContext } from '@/contexts/App.context';
 
 import {
   NavbarLink,
   NavbarClass,
   MobileMenuProps,
 } from '@/types/boilerplate.types';
-import { motion } from 'framer-motion';
 
 const ClassNames: NavbarClass = {
   desktop: 'hd-desktop-elm',
@@ -32,6 +34,7 @@ function MobileMenu({ isActive, children }: MobileMenuProps): JSX.Element {
 
 export default function Header(): JSX.Element {
   const Router = useRouter();
+  const { setIsCartActive } = useAppContext();
   const [mobileMenu, setMobileMenu] = React.useState<boolean>(false);
 
   const HeaderLinks: NavbarLink[] = [
@@ -136,10 +139,15 @@ export default function Header(): JSX.Element {
             {getDesktopElements()}
           </ul>
         </nav>
-        <section className="z-[100] flex  w-full max-w-[150px] items-center justify-end gap-5">
-          <button type="button" className="text-orange-600">
+        <section className="relative z-[100] flex  w-full max-w-[150px] items-center justify-end gap-5">
+          <button
+            onClick={() => setIsCartActive((prev) => !prev)}
+            type="button"
+            className=" text-orange-600"
+          >
             <BsBag className="h-7 w-7" />
           </button>
+          <Cart />
           <button
             type="button"
             onClick={() => setMobileMenu(!mobileMenu)}
