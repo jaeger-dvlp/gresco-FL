@@ -9,6 +9,7 @@ import ConfirmPopup from '@/components/popups/Confirm.popup';
 // ? Global styles
 import 'aos/dist/aos.css';
 import '@/styles/globals.css';
+import AppWrapper from '@/contexts/App.context';
 
 // * Local font implementation with @next/font/local - #1
 //
@@ -55,13 +56,15 @@ export default function App({ Component, pageProps }: AppProps) {
       //     `}
       //  </Script> 
       */}
-      <LanguageWrapper>
-        <PopupWrapper>
-          <AlertPopup />
-          <ConfirmPopup />
-          <Component {...pageProps} />
-        </PopupWrapper>
-      </LanguageWrapper>
+      <AppWrapper>
+        <LanguageWrapper>
+          <PopupWrapper>
+            <AlertPopup />
+            <ConfirmPopup />
+            <Component {...pageProps} />
+          </PopupWrapper>
+        </LanguageWrapper>
+      </AppWrapper>
     </>
   );
 }
