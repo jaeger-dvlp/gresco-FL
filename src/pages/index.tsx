@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import Banner from '@/components/home/Banner';
 import Counters from '@/components/home/Counters';
 import Desc from '@/components/home/Desc';
+import Buy from '@/components/home/Buy';
 
 export default function Home(): JSX.Element {
   /*
@@ -25,6 +26,7 @@ export default function Home(): JSX.Element {
         <Banner />
         <Counters />
         <Desc />
+        <Buy />
       </main>
       <Footer />
     </>
