@@ -34,7 +34,7 @@ function MobileMenu({ isActive, children }: MobileMenuProps): JSX.Element {
 
 export default function Header(): JSX.Element {
   const Router = useRouter();
-  const { setIsCartActive } = useAppContext();
+  const { isCartActive, activateCart, deactivateCart } = useAppContext();
   const [mobileMenu, setMobileMenu] = React.useState<boolean>(false);
 
   const HeaderLinks: NavbarLink[] = [
@@ -141,7 +141,7 @@ export default function Header(): JSX.Element {
         </nav>
         <section className="relative z-[100] flex  w-full max-w-[150px] items-center justify-end gap-5">
           <button
-            onClick={() => setIsCartActive((prev) => !prev)}
+            onClick={() => (isCartActive ? deactivateCart() : activateCart())}
             type="button"
             className=" text-orange-600"
           >

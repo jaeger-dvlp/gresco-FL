@@ -3,7 +3,7 @@ import { useAppContext } from '@/contexts/App.context';
 import ProductArtImage from '@/public/assets/img/productArt.jpeg';
 
 function Buy() {
-  const { setCartItems, cartItems } = useAppContext();
+  const { addProductToCart } = useAppContext();
   const Item = {
     id: 1,
     image: ProductArtImage.src,
@@ -12,19 +12,6 @@ function Buy() {
     quantity: 1,
   };
 
-  const addToCart = React.useCallback(() => {
-    const alreadyInCart = cartItems.find((item) => item.id === Item.id);
-
-    if (alreadyInCart) {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === Item.id ? { ...item, quantity: item.quantity + 1 } : item
-        )
-      );
-    } else {
-      setCartItems([...cartItems, Item]);
-    }
-  }, [cartItems]);
   return (
     <section
       id="buy"
@@ -52,7 +39,7 @@ function Buy() {
           </p>
           <button
             type="button"
-            onClick={addToCart}
+            onClick={() => addProductToCart(Item)}
             className="flex items-center justify-center border border-orange-600 bg-orange-600 px-5 py-2 text-sm uppercase text-white shadow-2xl shadow-black/20 transition-all duration-200 hover:bg-white hover:text-orange-600"
           >
             Sepete Ekle

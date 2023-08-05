@@ -25,8 +25,7 @@ function CartItem({ item }: { item: Item }) {
 }
 
 function Cart() {
-  const { isCartActive, cartItems, activateCart, setCartItems } =
-    useAppContext();
+  const { isCartActive, cartItems, activateCart, clearCart } = useAppContext();
 
   React.useEffect(() => {
     if (cartItems.length > 0) {
@@ -61,7 +60,7 @@ function Cart() {
               ))}
               <div className="mt-5 flex w-full items-center justify-end gap-2">
                 <button
-                  onClick={() => setCartItems([])}
+                  onClick={clearCart}
                   type="button"
                   className="px-2 text-sm text-slate-500 hover:underline"
                 >
