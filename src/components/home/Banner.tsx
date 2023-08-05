@@ -50,9 +50,9 @@ function Banner() {
             Doğal Nargile Kömürü
           </h2>
           <p className="text-sm font-light text-zinc-500 lg:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a
-            egestas odio, eu aliquet est. Sed vel ultricies diam. Nam auctor, mi
-            finibus mattis bibendum, urna massa feugiat quam, a tristique enim.
+            Sonsuz Keyif, Gerçek Lezzet. Gresco Doğal Nargile Kömürleri. En iyi
+            nargile deneyimi için tasarlanan çevre dostu ve kaliteli nargile
+            kömürleriyle buluşun. Şimdi zevkinizi doruklara çıkarın!
           </p>
           <section
             style={{

@@ -16,8 +16,8 @@ function Desc() {
             Neden Gresco?
           </h2>
           <p className="max-w-lg text-center text-zinc-600">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
-            magni sunt consequuntur quo, cum eum ipsam.
+            Çevre dostu üretim, üstün kalite, ve benzersiz nargile deneyimi için
+            Gresco doğal nargile kömürleri sizin için en iyi seçim.
           </p>
         </section>
         <ul className="flex w-full flex-wrap items-center justify-center gap-10">
@@ -25,21 +25,26 @@ function Desc() {
             <BsCheck2Circle size={35} className="text-orange-600" />
             <h3 className="text-lg font-semibold text-zinc-500">Doğal</h3>
             <p className="text-center text-zinc-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Saflığı ve gerçek lezzetiyle öne çıkan Gresco doğal nargile
+              kömürleri, en keyifli nargile deneyimini sunuyor.
             </p>
           </li>
           <li className="flex w-full max-w-[300px] flex-col items-center justify-center gap-2">
             <BsCheck2Circle size={35} className="text-orange-600" />
             <h3 className="text-lg font-semibold text-zinc-500">Uzun Ömürlü</h3>
             <p className="text-center text-zinc-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Güçlü ve dayanıklı yapısıyla Gresco nargile kömürleri, uzun süreli
+              ve keyif dolu nargile seansları sunuyor.
             </p>
           </li>
           <li className="flex w-full max-w-[300px] flex-col items-center justify-center gap-2">
             <BsCheck2Circle size={35} className="text-orange-600" />
-            <h3 className="text-lg font-semibold text-zinc-500">100% Doğal</h3>
+            <h3 className="text-lg font-semibold text-zinc-500">
+              100% Organik
+            </h3>
             <p className="text-center text-zinc-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Sağlığa ve çevreye dost, tamamen organik yapısıyla güvenle tercih
+              edebileceğiniz bir seçenek.
             </p>
           </li>
         </ul>

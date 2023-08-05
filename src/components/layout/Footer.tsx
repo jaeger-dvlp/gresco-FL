@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Logo from '@/components/misc/Logo';
-import { BsInstagram } from 'react-icons/bs';
 import { FooterSocialLink } from '@/types/boilerplate.types';
+import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 function Footer(): JSX.Element {
   const FooterSocialLinks: FooterSocialLink[] = [
@@ -12,13 +12,25 @@ function Footer(): JSX.Element {
       url: 'https://www.instagram.com',
       icon: BsInstagram,
     },
+    {
+      id: 1,
+      name: 'Twitter',
+      url: 'https://www.facebook.com',
+      icon: BsTwitter,
+    },
+    {
+      id: 2,
+      name: 'Facebook',
+      url: 'https://www.twitter.com',
+      icon: BsFacebook,
+    },
   ];
 
   const getSocialLinks = (): JSX.Element[] => {
     const elements = FooterSocialLinks.map(({ id, url, icon: Icon }) => (
       <li key={`fs-elm-${id}`}>
         <a href={url} target="_blank" rel="noreferrer">
-          <Icon className="h-4 w-4 text-black transition-all duration-150 hover:bg-white/30" />
+          <Icon className="h-4 w-4 text-orange-600 transition-all duration-150 hover:bg-white/30" />
         </a>
       </li>
     ));
