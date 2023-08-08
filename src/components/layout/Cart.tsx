@@ -1,7 +1,9 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
+,import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AllProducts, TItem, useAppContext } from '@/contexts/App.context';
+
 
 function CartItem({ item }: { item: Omit<TItem, 'price'> }) {
   const ItemPrice = AllProducts.find((i) => i.id === item.id)?.price || 0;
@@ -78,9 +80,12 @@ function Cart() {
                   <span className="text-orange-600">₺{totalPrice}</span>
                 </p>
 
-                <button type="button" className="bg-orange-600 px-3 py-1">
-                  <p className="text-sm text-white">Sepeti Onayla</p>
-                </button>
+                <Link
+                  href="/checkout"
+                  className="bg-orange-600 px-3 py-1 text-sm text-white"
+                >
+                  Sepeti Onayla
+                </Link>
                 <button
                   onClick={clearCart}
                   type="button"
