@@ -126,7 +126,7 @@ export default function Header(): JSX.Element {
     <motion.header
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: Router.pathname === '/' ? 2 : 0.5 }}
+      transition={{ duration: 0.5, delay: Router.pathname === '/' ? 2 : 0 }}
       className={`
       fixed left-0 top-0 z-[10] flex w-full items-center justify-center bg-white/80 font-theme shadow-2xl shadow-black/20 backdrop-blur-md transition-colors duration-500`}
     >
