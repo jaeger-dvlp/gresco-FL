@@ -1,9 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-,import Link from 'next/link';
+import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AllProducts, TItem, useAppContext } from '@/contexts/App.context';
-
 
 function CartItem({ item }: { item: Omit<TItem, 'price'> }) {
   const ItemPrice = AllProducts.find((i) => i.id === item.id)?.price || 0;
