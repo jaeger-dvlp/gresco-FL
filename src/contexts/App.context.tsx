@@ -25,6 +25,7 @@ type TAppContet = {
   clearCart: () => void;
   activateCart: () => void;
   deactivateCart: () => void;
+  getLocalStorageCartItems: () => any[];
 };
 
 const AppContext = React.createContext<TAppContet>({
@@ -34,10 +35,21 @@ const AppContext = React.createContext<TAppContet>({
   clearCart: () => {},
   activateCart: () => {},
   deactivateCart: () => {},
+  getLocalStorageCartItems: () => [],
 });
 
 function SetLocalStorageCartItems(cartItems: Omit<TItem, 'price'>[]) {
   localStorage.setItem('gresco-cart', JSON.stringify(cartItems));
+}
+
+function GetLocalStorageCartItems() {
+  const cartItemsFromLocalStorage = localStorage.getItem('gresco-cart');
+
+  if (cartItemsFromLocalStorage) {
+    return JSON.parse(cartItemsFromLocalStorage);
+  }
+
+  return [];
 }
 
 export default function AppWrapper({
@@ -95,6 +107,7 @@ export default function AppWrapper({
       deactivateCart,
       addProductToCart,
       clearCart,
+      getLocalStorageCartItems: GetLocalStorageCartItems,
     }),
     [cartItems, isCartActive]
   );
